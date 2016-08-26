@@ -86,6 +86,18 @@ This README describes how to create the project, if you want to try doing it you
 
   * To delete derived data by using the Xcode GUI: Window → Projects → See the "Derived Data" line → click the button "Delete..."
 
+
+## Protip: Make them private
+
+This protip is thanks to the [mokacoding Carthage tutorial](http://www.mokacoding.com/blog/setting-up-testing-libraries-with-carthage-xcode7/) 
+
+The Carthage docs say: Frameworks that want to include dependencies via Carthage, but do not want to force those dependencies on parent projects, can list them in the optional Cartfile.private file, identically to how they would be specified in the main Cartfile.
+
+So we do this:
+
+    mv Cartfile Cartfile.private
+    carthage update
+
 ## Tracking
 
 * Package: demo_swift_quick_nimble
