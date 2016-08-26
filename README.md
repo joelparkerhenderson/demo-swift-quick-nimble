@@ -37,8 +37,8 @@ This README describes how to create the project, if you want to try doing it you
 
 1. The Carthage `Cartfile` is:
 
-      github "Quick/Quick"
-      github "Quick/Nimble"
+        github "Quick/Quick"
+        github "Quick/Nimble"
 
 1. The Carthage setup has two areas that are specific to the test target.
 
@@ -55,18 +55,18 @@ This README describes how to create the project, if you want to try doing it you
 
 1. Edit the first file and create a test.
 
-      import Quick
-      import Nimble
+        import Quick
+        import Nimble
 
-      class DemoSpec: QuickSpec {
-        override func spec() {
-          describe("Demo") {
-            it("runs") {
-              expect(true).to(beTruthy())
+        class DemoSpec: QuickSpec {
+          override func spec() {
+            describe("Demo") {
+              it("runs") {
+                expect(true).to(beTruthy())
+              }
             }
           }
-       }
-     }
+        }
 
 ## Run the test
 
@@ -82,7 +82,7 @@ This README describes how to create the project, if you want to try doing it you
 
   * To delete derived data by using the command line:
 
-        rm -rf ~/Library/Developer/Xcode/DerivedData
+          rm -rf ~/Library/Developer/Xcode/DerivedData
 
   * To delete derived data by using the Xcode GUI: Window → Projects → See the "Derived Data" line → click the button "Delete..."
 
