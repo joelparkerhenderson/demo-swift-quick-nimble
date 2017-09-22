@@ -58,9 +58,11 @@ The Carthage setup has two areas that are specific to testing.
 
   * Change the target to say "Demo Swift Quick NimbleTests" because this is the test target.
 
-  * In the test target `Build Phases`, edit the section `Link Binary With Libraries`, and add the Quick framework and Nimble framework.
+  * Choose the test target `Build Phases` tab.
 
-  * Be sure to create the `Run Phase` in the test target, and not in the main application target.
+  * Edit the section `Link Binary With Libraries`, and add the Quick framework and Nimble framework.
+
+  * Add a `Run Phase` using typical Carthage settings.
 
 
 
@@ -102,7 +104,7 @@ To run the test, choose the menu Product → Test.
   * The simulator launches.
 
   * The Xcode status changes to "Testing...".
-  
+
   * You see a popup that says "Test Succeeded".
 
 If you use the editor to view the file "Demo Swift Quick NimbleTests.swift", then you see a green diamond check box, which confirms the test ran and succeeded.
