@@ -5,9 +5,9 @@
 This demonstration shows:
 
  * The [Swift](http://swift.org) programming language with
-    [Apple](http://apple.com)
-    [iOS](http://www.apple.com/ios/)
-    [Xcode](https://developer.apple.com/xcode/)
+   [Apple](http://apple.com)
+   [Xcode](https://developer.apple.com/xcode/)
+   [iOS](http://www.apple.com/ios/)
 
   * The [Quick](github.com/quick/quick) behavior-driven development framework.
 
@@ -17,92 +17,112 @@ We use Quick and Nimble for [Test Driven Development (TDD)](https://en.wikipedia
 
 Quick and Nimble are inspired by RSpec, Specta, and Ginkgo.
 
-This README describes how to create the project, if you want to try doing it yourself.
+This README describes how to create the demo.
 
-## How to create the project
 
-1. Launch Xcode and create a new project. We call ours "Demo Swift Quick Nimble".
+## Start
 
-  * Need help? See our repo [demo_swift_hello_world](https://github.com/joelparkerhenderson/demo_swift_hello_world).
+To use this demo, you can clone this repo, or you can use this README to create your own project.
 
-## Add Quick and Nimble
+If you clone this repo, then be aware that there are multiple git branches, so pick the one you want.
 
-1. Add Quick and Nimble to the project.
+  * swift-4-xcode-9: Swift version 4, Xcode version 9, iOS version 11.
 
-  * To add these as a dependency, we prefer using Carthage.
+  * swift-3-xcode-8: Swift version 3, Xcode version 8, iOS version 10.
 
-  * If you prefer, you can add it by using a dynamic framework or using Cocoapods.
 
-  * Need help with Carthage? See our repo [demo_swift_carthage](https://github.com/joelparkerhenderson/demo_swift_carthage).
+## Create the project
 
-1. The Carthage `Cartfile` is:
+Launch Xcode and create a new project. 
 
-        github "Quick/Quick"
-        github "Quick/Nimble"
+  * Use iOS template "Single View Application" and Product Name "Demo Swift Quick Nimble".
 
-1. The Carthage setup has two areas that are specific to the test target.
+  * [Help](doc/setup/create_a_new_xcode_project.md)
 
-  * Be sure to create the `Run Phase` in the test target, and not in the main application target.
+Add Quick and Nimble. We suggest using Carthage or Cocoapods.
+
+  * Carthage Cartfile.private:
+
+    ```
+    github "Quick/Quick"
+    github "Quick/Nimble"
+    ```
+
+  * [Help](doc/setup/add_carthage_frameworks.md)
+
+The Carthage setup has two areas that are specific to testing.
+
+  * In the center area of Xcode, near the top, there is a select box that lets you change the target. 
+
+  * The default target says "Demo Swift Quick Nimble" because this is the typical app.
+
+  * Change the target to say "Demo Swift Quick NimbleTests" because this is the test target.
 
   * In the test target `Build Phases`, edit the section `Link Binary With Libraries`, and add the Quick framework and Nimble framework.
 
+  * Be sure to create the `Run Phase` in the test target, and not in the main application target.
+
+
+
 ## Create a test
 
-1. The project automatically creates two test folders and files.
+The project automatically creates two test folders and files.
 
-  * Demo Swift Quick NimbleTests/Demo Swift Quick NimbleTests.swift
-  * Demo Swift Quick NimbleUITests/Demo Swift Quick NimbleUITests.swift
+```shell
+Demo Swift Quick NimbleTests/Demo Swift Quick NimbleTests.swift
+Demo Swift Quick NimbleUITests/Demo Swift Quick NimbleUITests.swift
+```
 
-1. Edit the first file and create a test.
+Edit `Demo Swift Quick NimbleTests.swift`.
 
-        import Quick
-        import Nimble
+Delete all the existing code because it is for XCTest, not Quick and Nimble.
 
-        class DemoSpec: QuickSpec {
-          override func spec() {
-            describe("Demo") {
-              it("runs") {
-                expect(true).to(beTruthy())
-              }
-            }
-          }
-        }
+Add this code:
 
-## Run the test
+```swift
+import Quick
+import Nimble
 
-1. To run the test, choose the menu Product → Test.
+class DemoSpec: QuickSpec {
+  override func spec() {
+    describe("Demo") {
+      it("runs") {
+        expect(true).to(beTruthy())
+      }
+    }
+  }
+}
+```
+
+
+## Run
+
+To run the test, choose the menu Product → Test.
 
   * The simulator launches.
 
+  * The Xcode status changes to "Testing...".
+  
   * You see a popup that says "Test Succeeded".
 
-1. If you use the editor to view the file "Demo Swift Quick NimbleTests.swift", then you see a green diamond check box, which confirms the test ran and succeeded.
+If you use the editor to view the file "Demo Swift Quick NimbleTests.swift", then you see a green diamond check box, which confirms the test ran and succeeded.
 
-1. If you get the error "No such module 'Quick'" then you may need to delete derived data.
+If you get the error "No such module 'Quick'" then you may need to delete derived data.
 
   * To delete derived data by using the command line:
 
-          rm -rf ~/Library/Developer/Xcode/DerivedData
+      ```shell
+      rm -rf ~/Library/Developer/Xcode/DerivedData
+      ```
 
   * To delete derived data by using the Xcode GUI: Window → Projects → See the "Derived Data" line → click the button "Delete..."
 
 
-## Protip: Make them private
-
-This protip is thanks to the [mokacoding Carthage tutorial](http://www.mokacoding.com/blog/setting-up-testing-libraries-with-carthage-xcode7/) 
-
-The Carthage docs say: Frameworks that want to include dependencies via Carthage, but do not want to force those dependencies on parent projects, can list them in the optional Cartfile.private file, identically to how they would be specified in the main Cartfile.
-
-So we do this:
-
-    mv Cartfile Cartfile.private
-    carthage update
-
 ## Tracking
 
 * Package: demo_swift_quick_nimble
-* Version: 1.0.0
+* Version: 3.0.0
 * Created: 2016-04-09
-* Updated: 2016-08-25
+* Updated: 2017-09-22
 * License: BSD, GPL, MIT
 * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
